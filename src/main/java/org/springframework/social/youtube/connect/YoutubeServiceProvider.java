@@ -1,8 +1,7 @@
 package org.springframework.social.youtube.connect;
 
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
-import org.springframework.social.oauth2.OAuth2Operations;
-import org.springframework.social.youtube.Youtube;
+import org.springframework.social.youtube.api.Youtube;
 
 /**
  * Created by IntelliJ IDEA.
