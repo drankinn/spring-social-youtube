@@ -10,6 +10,8 @@
     <properties>
         <spring.framework.version>3.1.1.RELEASE</spring.framework.version>
         <spring.framework.security.version>3.1.0.RELEASE</spring.framework.security.version>
+        <spring.framework.test.version>3.1.0.RELEASE</spring.framework.test.version>
+        <java.version>1.7</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -41,6 +43,21 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.framework.test.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
         </dependency>
     </dependencies>
     <build>
