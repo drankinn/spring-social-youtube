@@ -7,6 +7,14 @@
     <groupId>spring-social-youtube</groupId>
     <artifactId>spring-social-youtube</artifactId>
     <version>1.0</version>
+    <developers>
+        <developer>
+            <name>Lance Andersen</name>
+            <email>techlance@gmail.com</email>
+            <organization>Weblabz LLC</organization>
+            <organizationUrl>http://weblabz.org</organizationUrl>
+        </developer>
+    </developers>
     <properties>
         <spring.framework.version>3.1.1.RELEASE</spring.framework.version>
         <spring.framework.security.version>3.1.0.RELEASE</spring.framework.security.version>
