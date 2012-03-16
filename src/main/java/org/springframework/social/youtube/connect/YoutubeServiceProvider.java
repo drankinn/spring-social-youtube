@@ -2,6 +2,7 @@ package org.springframework.social.youtube.connect;
 
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
 import org.springframework.social.youtube.api.Youtube;
+import org.springframework.social.youtube.api.impl.YoutubeTemplate;
 
 /**
  * Created by IntelliJ IDEA.
@@ -26,6 +27,6 @@ public class YoutubeServiceProvider extends AbstractOAuth2ServiceProvider<Youtub
 
     @Override
     public Youtube getApi(String accessToken) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new YoutubeTemplate(accessToken);
     }
 }
