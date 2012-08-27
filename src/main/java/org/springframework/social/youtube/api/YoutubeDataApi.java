@@ -2,6 +2,8 @@ package org.springframework.social.youtube.api;
 
 import org.springframework.util.MultiValueMap;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -13,6 +15,7 @@ import java.util.List;
  */
 public interface YoutubeDataApi {
 
+
     /**
      * Fetches an object, extracting it into the given Java type
      * Requires appropriate permission to fetch the object.
@@ -20,8 +23,15 @@ public interface YoutubeDataApi {
      * @param type the Java type to fetch
      * @return an Java object representing the requested Youtube object.
      */
-    <T> T fetchObject(String objectId, Class<T> type);
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, Double apiVersion) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, YoutubeDataFormat format) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, Double apiVersion, YoutubeDataFormat format) throws IOException, ParseException;
 
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, Double apiVersion) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, YoutubeDataFormat format) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, Double apiVersion, YoutubeDataFormat format) throws IOException, ParseException;
     /**
      * Fetches an object, extracting it into the given Java type
      * Requires appropriate permission to fetch the object.
@@ -30,7 +40,17 @@ public interface YoutubeDataApi {
      * @param queryParameters query parameters to include in the request
      * @return an Java object representing the requested Youtube object.
      */
-    <T> T fetchObject(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters);
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters, Double apiVersion) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters, YoutubeDataFormat format) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> T get(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters, Double apiVersion, YoutubeDataFormat format) throws IOException, ParseException;
+
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters, Double apiVersion) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters, YoutubeDataFormat format) throws IOException, ParseException;
+    <T extends YoutubeDataEntry> List<T> getList(String objectId, Class<T> type, MultiValueMap<String, String> queryParameters, Double apiVersion, YoutubeDataFormat format) throws IOException, ParseException;
+
+
 
     /**
      * Fetches connections, extracting them into a collection of the given Java type
@@ -38,20 +58,9 @@ public interface YoutubeDataApi {
      * @param objectId the ID of the object to retrieve the connections for.
      * @param connectionName the connection name.
      * @param type the Java type of each connection.
-     * @param fields the fields to include in the response.
      * @return a list of Java objects representing the Youtube objects in the connections.
      */
     <T> List<T> fetchConnections(String objectId, String connectionName, Class<T> type, String... fields);
-
-    /**
-     * Fetches connections, extracting them into a collection of the given Java type
-     * Requires appropriate permission to fetch the object connection.
-     * @param objectId the ID of the object to retrieve the connections for.
-     * @param connectionName the connection name.
-     * @param type the Java type of each connection.
-     * @param queryParameters query parameters to include in the request
-     * @return a list of Java objects representing the Youtube objects in the connections.
-     */
     <T> List<T> fetchConnections(String objectId, String connectionName, Class<T> type, MultiValueMap<String, String> queryParameters);
 
     /**
@@ -74,6 +83,9 @@ public interface YoutubeDataApi {
      * @param data the data to publish to the connection.
      */
     void post(String objectId, String connectionName, MultiValueMap<String, String> data);
+    void post(String objectId, String connectionName, MultiValueMap<String, String> data, Double apiVersion);
+    void post(String objectId, String connectionName, MultiValueMap<String, String> data, YoutubeDataFormat format);
+    void post(String objectId, String connectionName, MultiValueMap<String, String> data, Double apiVersion, YoutubeDataFormat format);
 
     /**
      * Deletes an object.
@@ -81,6 +93,9 @@ public interface YoutubeDataApi {
      * @param objectId the object ID
      */
     void delete(String objectId);
+    //void delete(String objectId, Double apiVersion);
+    //void delete(String objectId, YoutubeDataFormat format);
+    //void delete(String objectId, Double apiVersion, YoutubeDataFormat format);
 
     /**
      * Deletes an object connection.
@@ -90,5 +105,5 @@ public interface YoutubeDataApi {
      */
     void delete(String objectId, String connectionName);
 
-    static final String GDATA_API_URL = "https://gdata.youtube.com/";
+    static final String GDATA_API_URL = "http://gdata.youtube.com";
 }

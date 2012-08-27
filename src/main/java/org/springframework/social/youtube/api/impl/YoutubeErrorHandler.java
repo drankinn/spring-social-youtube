@@ -25,6 +25,7 @@ public class YoutubeErrorHandler implements ResponseErrorHandler {
 
     @Override
     public void handleError(ClientHttpResponse response) throws IOException {
+        String s = "";
 
     }
 }

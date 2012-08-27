@@ -12,5 +12,9 @@ public interface Youtube extends YoutubeDataApi, ApiBinding {
 
     QueryOperations queryOperations();
 
-    FeedOperations feedOperations();
+    ChannelOperations channelOperations();
+
+    EventOperations eventOperations();
+
+    InboxOperations inboxOperations();
 }

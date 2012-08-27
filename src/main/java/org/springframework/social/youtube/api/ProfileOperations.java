@@ -1,5 +1,7 @@
 package org.springframework.social.youtube.api;
 
+import org.springframework.social.youtube.api.impl.YoutubeProfile;
+
 import java.util.List;
 
 /**
@@ -14,4 +16,6 @@ public interface ProfileOperations {
     YoutubeProfile getProfile(String userId);
 
     List<YoutubeProfile> search(String query);
+
+    List getUsernameSuggestions(String desiredName);
 }

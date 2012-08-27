@@ -1,9 +1,8 @@
 package org.springframework.social.youtube.connect;
 
-import org.springframework.social.connect.ApiAdapter;
 import org.springframework.social.connect.support.OAuth2ConnectionFactory;
-import org.springframework.social.oauth2.OAuth2ServiceProvider;
 import org.springframework.social.youtube.api.Youtube;
+import org.springframework.social.youtube.connect.util.YoutubeAdapter;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,7 +14,7 @@ import org.springframework.social.youtube.api.Youtube;
 public class YoutubeConnectionFactory extends OAuth2ConnectionFactory<Youtube> {
 
 
-    public YoutubeConnectionFactory(String clientId, String clientSecret) {
-        super("youtube", new YoutubeServiceProvider(clientId, clientSecret), new YoutubeAdapter());
+    public YoutubeConnectionFactory(String clientId, String clientSecret, String developerKey) {
+        super("youtube", new YoutubeServiceProvider(clientId, clientSecret, developerKey), new YoutubeAdapter());
     }
 }

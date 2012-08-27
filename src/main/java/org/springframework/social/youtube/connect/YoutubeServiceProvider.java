@@ -9,11 +9,10 @@ import org.springframework.social.youtube.api.impl.YoutubeTemplate;
  * User: lance
  * Date: 3/1/12
  * Time: 12:12 PM
- * To change this template use File | Settings | File Templates.
- */
+  */
 public class YoutubeServiceProvider extends AbstractOAuth2ServiceProvider<Youtube> {
 
-
+     private String developerKey;
     /**
      * Create a new {@link org.springframework.social.oauth2.OAuth2ServiceProvider}.
      *
@@ -21,12 +20,13 @@ public class YoutubeServiceProvider extends AbstractOAuth2ServiceProvider<Youtub
      * @param clientSecret String containing the google developer account's client Secret for this application
      * @see <a href="https://code.google.com/apis/console#access">Api Console</a> to create these parameters.
      */
-    public YoutubeServiceProvider(String clientId, String clientSecret) {
+    public YoutubeServiceProvider(String clientId, String clientSecret, String developerKey) {
         super(new YoutubeOAuth2Template(clientId, clientSecret));
+        this.developerKey = developerKey;
     }
 
     @Override
     public Youtube getApi(String accessToken) {
-        return new YoutubeTemplate(accessToken);
+        return new YoutubeTemplate(accessToken, developerKey);
     }
 }
